@@ -3,8 +3,10 @@ cadastro.addEventListener('submit', (event) => {
     event.preventDefault();
     const corpo = {
         nome: cadastro.nome.value,
-        cpf: cadastro.cpf.value,
-        nascimento: cadastro.nascimento.value
+        crm: cadastro.crm.value,
+        especialidade: cadastro.especialidade.value,
+        telefone: cadastro.telefone.value,
+        email: cadastro.email.value
     }
     fetch('http://localhost:4000/medicos', {
         method: 'POST',
@@ -32,10 +34,10 @@ fetch('http://localhost:4000/medicos')
             linha.innerHTML = `
             <td data-label="Id:">${medico.id_medico}</td>
             <td data-label="Nome:" contenteditable="true">${medico.nome}</td>
-            <td data-label="CPF:" contenteditable="true">${medico.cpf}</td>
-            <td data-label="E-mail:" contenteditable="true">${medico.email}</td>
+            <td data-label="CRM:" contenteditable="true">${medico.crm}</td>
+            <td data-label="Especialidade:" contenteditable="true">${medico.especialidade}</td>
             <td data-label="Telefone:" contenteditable="true">${medico.telefone}</td>
-            <td data-label="Nascimento:" contenteditable="true">${new Date(medico.nascimento).toLocaleDateString('pt-BR')}</td>
+            <td data-label="E-mail:" contenteditable="true">${medico.email}</td>
             <td><button onclick="alterar(this)">*</button><button onclick="excluir(${medico.id_medico})">-</button></td>
         `;
             tabela.appendChild(linha);
@@ -46,8 +48,10 @@ function alterar(e) {
     const id = e.parentNode.parentNode.children[0].textContent
     const corpo = {
         nome: e.parentNode.parentNode.children[1].textContent,
-        cpf: e.parentNode.parentNode.children[2].textContent,
-        nascimento: e.parentNode.parentNode.children[3].textContent.split('/').reverse().join('-')
+        crm: e.parentNode.parentNode.children[2].textContent,
+        especialidade: e.parentNode.parentNode.children[3].textContent.split('/').reverse().join('-'),
+        telefone: e.parentNode.parentNode.children[4].textContent.split('/').reverse().join('-'),
+        email: e.parentNode.parentNode.children[5].textContent
     }
     fetch(`http://localhost:4000/medicos/${id}`, {
         method: 'PUT',
@@ -64,8 +68,8 @@ function alterar(e) {
         });
 }
 
-function excluir(id_cliente) {
-    fetch(`http://localhost:4000/medicos/${id_cliente}`, {
+function excluir(id_medico) {
+    fetch(`http://localhost:4000/medicos/${id_medico}`, {
         method: 'DELETE'
     })
         .then(response => response.status)

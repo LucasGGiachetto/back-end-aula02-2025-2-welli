@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS clinica;
 CREATE DATABASE clinica;
 USE clinica;
 
@@ -11,8 +12,8 @@ CREATE TABLE clientes(
 CREATE TABLE medicos(
     id_medico INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    crm VARCHAR(255) NOT NULL,
+    especialidade VARCHAR(255) NOT NULL,
     telefone VARCHAR(255) NOT NULL,
-    cpf VARCHAR(255) NOT NULL,
-    nascimento VARCHAR(255) NOT NULL
+    email VARCHAR(255) NOT NULL
 );

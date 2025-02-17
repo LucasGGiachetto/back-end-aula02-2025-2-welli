@@ -15,11 +15,10 @@
             <h2>Cadastro</h2>
             <form id="cadastro">
                 <input type="text" name="nome" placeholder="Nome" required>
-                <input type="number" name="cpf" placeholder="CPF" required>
+                <input type="number" name="crm" placeholder="CRM" required>
+                <input type="text" name="especialidade" placeholder="especialidade" required>
+                <input type="text" name="telefone" placeholder="telefone" required>
                 <input type="text" name="email" placeholder="E-mail" required>
-                <input type="number" name="telefone" placeholder="telefone" required>
-                <label for="nascimento">Data de nascimento</label>
-                <input type="date" name="nascimento" required>
                 <button type="submit">Cadastrar</button>
             </form>
         </section>
@@ -30,14 +29,14 @@
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>CPF</th>
-                        <th>E-mail</th>
+                        <th>CRM</th>
+                        <th>Especialidade</th>
                         <th>Telefone</th>
-                        <th>Nascimento</th>
+                        <th>E-mail</th>
                         <th>Alterar ou excluir</th>
                     </tr>
                 </thead>
-                <tbody id="clientes">
+                <tbody id="medicos">
                 </tbody>
             </table>
         </section>

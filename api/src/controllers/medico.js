@@ -1,8 +1,8 @@
 const con = require('../connect');
 
 function create(req, res) {
-    const { nome, cpf, email, telefone, nascimento } = req.body;
-    const sql = `INSERT INTO medicos (nome, cpf, email, telefone, nascimento) VALUES ('${nome}', '${cpf}', '${email}', ${telefone} '${nascimento}')`;
+    const { nome, crm, especialidade, telefone, email } = req.body;
+    const sql = `INSERT INTO medicos (nome, crm, especialidade, telefone, email) VALUES ('${nome}', '${crm}', '${especialidade}', '${telefone}', '${email}')`;
     con.query(sql, (error, result) => {
         if (error) {
             res.status(500).json('Erro ao cadastrar médico(a)');
@@ -25,8 +25,8 @@ function read(req, res) {
 
 function update(req, res) {
     const { id } = req.params;
-    const { nome, cpf, email, telefone, nascimento } = req.body;
-    const sql = `UPDATE medicos SET nome = '${nome}', cpf= '${cpf}', email = '${email}', telefone = '${telefone}' nascimento = '${nascimento}' WHERE id_medico = ${id}`;
+    const { nome, crm, especialidade, telefone, email } = req.body;
+    const sql = `UPDATE medicos SET nome = '${nome}', crm= '${crm}', especialidade = '${especialidade}', telefone = '${telefone}', email = '${email}' WHERE id_medico = ${id}`;
     con.query(sql, (error, result) => {
         if (error) {
             res.status(500).json('Erro ao alterar médico(a)');
